@@ -1,0 +1,79 @@
+import { motion } from "framer-motion";
+import { Container, Typography, Box } from "@mui/material";
+import { Toaster } from "react-hot-toast";
+import SubmitFlag from "../components/SubmitFlag";
+
+const LastCommit = () => {
+  return (
+    <Container
+      maxWidth="md"
+      sx={{
+        height: "100vh",
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        justifyContent: "center",
+        textAlign: "center",
+      }}
+    >
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 1 }}
+      >
+        <Typography
+          variant="h4"
+          color="success.main"
+          gutterBottom
+          sx={{ fontWeight: 600 }}
+        >
+          Deployment successful.
+        </Typography>
+      </motion.div>
+
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 1, duration: 1 }}
+      >
+        <Typography variant="h6" color="text.primary">
+          Nothing seems wrong.
+        </Typography>
+      </motion.div>
+
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 3, duration: 1 }}
+      >
+        <Box sx={{ mt: 8 }}>
+          <Typography
+            variant="caption"
+            sx={{
+              fontSize: "0.6rem",
+              color: "text.disabled",
+              fontStyle: "italic",
+            }}
+          >
+            "If nothing is wrong, why did he commit{" "}
+            <strong>
+              I need to be baptized by you, and do you come to me?
+            </strong>
+            ?"
+          </Typography>
+        </Box>
+      </motion.div>
+
+      {/* Reuse submit flag component */}
+      <SubmitFlag
+        expectedFlag={import.meta.env.VITE_FLAG1}
+        onSuccessPath="/circle-around"
+        successMessage="Path Cleared! 🚀"
+      />
+
+      <Toaster />
+    </Container>
+  );
+};
+
+export default LastCommit;
