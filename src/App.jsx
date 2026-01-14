@@ -7,6 +7,7 @@ import StrongestWills from "./pages/3-StrongestWills";
 import DarkKnight from "./pages/4-DrakKnight";
 import WaitForIt from "./pages/5-WaitForIt";
 import ProtectedRoute from "./components/ProtectedRoute";
+import GameInstructions from "./components/GameInstructions";
 
 const theme = createTheme({
   palette: {
@@ -31,6 +32,7 @@ function App() {
     <ThemeProvider theme={theme}>
       <CssBaseline />
       <BrowserRouter>
+        <GameInstructions />
         <Routes>
           <Route path="/" element={<Home />} />
           {/* Level 1 */}
