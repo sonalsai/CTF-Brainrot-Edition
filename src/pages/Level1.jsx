@@ -70,6 +70,7 @@ const LastCommit = () => {
         onSuccessPath="/circle-around"
         successMessage="Path Cleared! 🚀"
         level={1}
+        taskMessage="Hope you didn't just guess that."
       />
     </Container>
   );

@@ -235,6 +235,7 @@ const WaitForIt = () => {
         onSuccessPath="/"
         successMessage="Worth the wait! 🕰️"
         level={5}
+        taskMessage="That was 42 seconds of pure adrenaline."
       />
     </Box>
   );

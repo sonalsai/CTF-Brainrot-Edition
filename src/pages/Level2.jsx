@@ -300,6 +300,7 @@ const CircleMe = () => {
           onSuccessPath={`/${import.meta.env.VITE_TASK3_URL}`}
           successMessage="Infinity Conquered! ♾️"
           level={2}
+          taskMessage="Dizzier than a beyblade?"
         />
       </Container>
     </Box>

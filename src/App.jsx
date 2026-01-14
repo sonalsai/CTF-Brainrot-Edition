@@ -1,11 +1,11 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { createTheme, ThemeProvider, CssBaseline } from "@mui/material";
-import Home from "./pages/0-Home";
-import LastCommit from "./pages/1-LastCommit";
-import CircleMe from "./pages/2-CircleMe";
-import StrongestWills from "./pages/3-StrongestWills";
-import DarkKnight from "./pages/4-DrakKnight";
-import WaitForIt from "./pages/5-WaitForIt";
+import Home from "./pages/Home";
+import Level1 from "./pages/Level1";
+import Level2 from "./pages/Level2";
+import Level3 from "./pages/Level3";
+import Level4 from "./pages/Level4";
+import Level5 from "./pages/Level5";
 import ProtectedRoute from "./components/ProtectedRoute";
 import GameInstructions from "./components/GameInstructions";
 
@@ -36,16 +36,17 @@ function App() {
       <Toaster />
       <BrowserRouter>
         <GameInstructions />
+
         <Routes>
           <Route path="/" element={<Home />} />
           {/* Level 1 */}
-          <Route path="/last-commit" element={<LastCommit />} />
+          <Route path="/last-commit" element={<Level1 />} />
           {/* Level 2 */}
           <Route
             path="/circle-around"
             element={
               <ProtectedRoute requiredSolvedLevel={1}>
-                <CircleMe />
+                <Level2 />
               </ProtectedRoute>
             }
           />
@@ -54,7 +55,7 @@ function App() {
             path={`/${import.meta.env.VITE_TASK3_URL}`}
             element={
               <ProtectedRoute requiredSolvedLevel={2}>
-                <StrongestWills />
+                <Level3 />
               </ProtectedRoute>
             }
           />
@@ -63,7 +64,7 @@ function App() {
             path="/dark-knight"
             element={
               <ProtectedRoute requiredSolvedLevel={3}>
-                <DarkKnight />
+                <Level4 />
               </ProtectedRoute>
             }
           />
@@ -72,7 +73,7 @@ function App() {
             path="/wait-for-it"
             element={
               <ProtectedRoute requiredSolvedLevel={4}>
-                <WaitForIt />
+                <Level5 />
               </ProtectedRoute>
             }
           />

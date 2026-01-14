@@ -11,7 +11,7 @@ import {
   Box,
   Typography,
 } from "@mui/material";
-import { FaArrowRight, FaFlag } from "react-icons/fa";
+import { FaArrowRight, FaFlag, FaBrain } from "react-icons/fa";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 import { saveProgress } from "../utils/security";
@@ -21,8 +21,10 @@ const SubmitFlag = ({
   onSuccessPath,
   successMessage = "System Unlocked! 🔓",
   level,
+  taskMessage = "Loading next challenge...",
 }) => {
   const [open, setOpen] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
   const [flag, setFlag] = useState("");
   const [isHovered, setIsHovered] = useState(false);
   const navigate = useNavigate();
@@ -33,28 +35,17 @@ const SubmitFlag = ({
   const handleSubmit = async () => {
     const refinedFlag = flag.trim().toLowerCase().replaceAll(" ", "_");
     if (refinedFlag === expectedFlag) {
-      toast.success(successMessage, {
-        duration: 2000,
-        position: "top-center",
-        icon: "🚀",
-        style: {
-          background: "#1a1a1a",
-          color: "#03dac6",
-          border: "1px solid #03dac6",
-          boxShadow: "0 0 15px rgba(3, 218, 198, 0.3)",
-          fontWeight: "bold",
-        },
-      });
-
       // Update progress securely
       if (level) {
         await saveProgress(level);
       }
 
+      setIsLoading(true);
+      handleClose();
+
       setTimeout(() => {
         navigate(onSuccessPath);
-      }, 1500);
-      handleClose();
+      }, 3000);
     } else {
       toast.error("Incorrect Flag. Try again! 🚫", {
         position: "top-center",
@@ -175,12 +166,19 @@ const SubmitFlag = ({
               fullWidth
               value={flag}
               onChange={(e) => setFlag(e.target.value)}
+              onKeyDown={(e) => e.key === "Enter" && handleSubmit()}
               placeholder="enter_flag_here"
               sx={{
                 "& .MuiOutlinedInput-root": {
                   borderRadius: "16px",
                   fontSize: "1.1rem",
                   fontFamily: "monospace",
+                  backgroundColor: "rgba(0,0,0,0.03)",
+                  "& fieldset": { border: "none" },
+                },
+                "& .MuiInputBase-input": {
+                  textAlign: "center",
+                  color: "#333", // Ensure text visibility
                 },
               }}
               InputProps={{
@@ -240,6 +238,122 @@ const SubmitFlag = ({
           </Button>
         </DialogActions>
       </Dialog>
+
+      {/* Loading Overlay */}
+      <AnimatePresence>
+        {isLoading && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            style={{
+              position: "fixed",
+              top: 0,
+              left: 0,
+              width: "100%",
+              height: "100%",
+              background:
+                "radial-gradient(circle at center, #ffffff 0%, #f0f0f0 100%)",
+              zIndex: 9999,
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+              justifyContent: "center",
+              color: "#333",
+            }}
+          >
+            {/* Animated Icon Container */}
+            <Box
+              sx={{
+                position: "relative",
+                width: 120,
+                height: 120,
+                mb: 4,
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+              }}
+            >
+              {/* Rotating Ring */}
+              <motion.div
+                animate={{ rotate: 360 }}
+                transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
+                style={{
+                  position: "absolute",
+                  width: "100%",
+                  height: "100%",
+                  borderRadius: "50%",
+                  border: "2px dashed #6200ea",
+                  boxShadow: "0 0 15px rgba(98, 0, 234, 0.2)",
+                }}
+              />
+
+              {/* Inner Pulsing Circle */}
+              <motion.div
+                animate={{ scale: [1, 1.1, 1], opacity: [0.5, 0.8, 0.5] }}
+                transition={{
+                  duration: 2,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                }}
+                style={{
+                  position: "absolute",
+                  width: "80%",
+                  height: "80%",
+                  borderRadius: "50%",
+                  background: "rgba(3, 218, 198, 0.1)",
+                  border: "1px solid rgba(3, 218, 198, 0.3)",
+                }}
+              />
+
+              {/* Icon */}
+              <FaBrain size={50} color="#6200ea" style={{ zIndex: 2 }} />
+            </Box>
+
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.2 }}
+            >
+              <Typography
+                variant="h3"
+                sx={{
+                  fontWeight: 800,
+                  fontFamily: "Poppins, sans-serif",
+                  background: "linear-gradient(45deg, #6200ea, #03dac6)",
+                  WebkitBackgroundClip: "text",
+                  WebkitTextFillColor: "transparent",
+                  mb: 1,
+                  letterSpacing: "1px",
+                  textAlign: "center",
+                }}
+              >
+                {successMessage}
+              </Typography>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.5 }}
+            >
+              <Typography
+                variant="h6"
+                sx={{
+                  color: "#555",
+                  fontFamily: "monospace",
+                  letterSpacing: "0.05em",
+                  mt: 1,
+                  textAlign: "center",
+                  maxWidth: "80%",
+                }}
+              >
+                {taskMessage}
+              </Typography>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </>
   );
 };

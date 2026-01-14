@@ -79,6 +79,7 @@ const StrongestWills = () => {
         onSuccessPath="/dark-knight"
         successMessage="Balance restored. 🧤"
         level={3}
+        taskMessage="Did you guess it or did it cost everything?"
       />
     </Box>
   );

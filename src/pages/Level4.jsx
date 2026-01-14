@@ -372,6 +372,7 @@ const DarkKnight = () => {
         onSuccessPath="/wait-for-it"
         successMessage="so you are serious..."
         level={4}
+        taskMessage="You're the hero this codebase deserves."
       />
     </Container>
   );
