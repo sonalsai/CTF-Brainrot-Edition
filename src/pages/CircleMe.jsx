@@ -2,11 +2,10 @@ import { useState, useEffect, useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { Container, Typography, Box } from "@mui/material";
 import { Toaster } from "react-hot-toast";
-import { FaArrowDown } from "react-icons/fa";
+
 import SubmitFlag from "../components/SubmitFlag";
 
 const CircleMe = () => {
-  const [showInfinity, setShowInfinity] = useState(false);
   const scrollRef = useRef(null);
 
   const { scrollYProgress } = useScroll({ container: scrollRef });
@@ -14,12 +13,6 @@ const CircleMe = () => {
   const rotate = useTransform(scrollYProgress, [0, 1], [0, 360]);
 
   // Show infinity symbol after a delay
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setShowInfinity(true);
-    }, 5000);
-    return () => clearTimeout(timer);
-  }, []);
 
   return (
     <Box
@@ -31,12 +24,13 @@ const CircleMe = () => {
         "&::-webkit-scrollbar": { display: "none" },
         scrollbarWidth: "none",
         "-ms-overflow-style": "none",
+        userSelect: "none",
       }}
     >
       <Container
         maxWidth="md"
         sx={{
-          minHeight: "250vh", // Increased height for better scroll experience
+          minHeight: "200vh", // Increased height for better scroll experience
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
@@ -139,91 +133,165 @@ const CircleMe = () => {
               “He said the answer was hidden in underground”
             </Typography>
           </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{
-              delay: 2,
-              duration: 1,
-              repeat: Infinity,
-              repeatType: "reverse",
-            }}
-            style={{ position: "absolute", bottom: 40 }}
-          >
-            <Box
-              sx={{
-                display: "flex",
-                flexDirection: "column",
-                alignItems: "center",
-                gap: 1,
-                opacity: 0.6,
-              }}
-            >
-              <Typography variant="caption" sx={{ letterSpacing: 2 }}>
-                SCROLL DOWN
-              </Typography>
-              <FaArrowDown />
-            </Box>
-          </motion.div>
         </Box>
 
-        {/* Simulating long content/scroll requirement */}
+        {/* Hidden Section Revealed on Scroll */}
         <Box
           sx={{
             height: "100vh",
             display: "flex",
+            flexDirection: "column",
             alignItems: "center",
             justifyContent: "center",
-            opacity: 0.1,
+            gap: 4,
           }}
         >
-          <Typography
-            variant="h1"
-            sx={{
-              fontWeight: 900,
-              fontSize: "10rem",
-              color: "#e0e0e0",
-              transform: "rotate(-45deg)",
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ amount: 0.5 }}
+            variants={{
+              visible: {
+                transition: {
+                  staggerChildren: 0.03,
+                },
+              },
+            }}
+            style={{
+              display: "flex",
+              flexWrap: "wrap",
+              justifyContent: "center",
+              maxWidth: "800px",
+              marginBottom: "16px",
             }}
           >
-            LOOP
-          </Typography>
-        </Box>
+            {"Oh you caught me! \n But can you escape the loop?"
+              .split("")
+              .map((char, index) => {
+                if (char === "\n") {
+                  return (
+                    <div
+                      key={index}
+                      style={{ flexBasis: "100%", height: "0" }}
+                    />
+                  );
+                }
+                return (
+                  <motion.span
+                    key={index}
+                    variants={{
+                      hidden: { opacity: 0, y: 20, scale: 0.5 },
+                      visible: {
+                        opacity: 1,
+                        y: 0,
+                        scale: 1,
+                        transition: {
+                          type: "spring",
+                          stiffness: 300,
+                          damping: 20,
+                        },
+                      },
+                    }}
+                    style={{ display: "inline-block", whiteSpace: "pre" }}
+                  >
+                    <Typography
+                      variant="h3"
+                      component="span"
+                      sx={{
+                        fontWeight: 900,
+                        color: "#c4c3c3ff",
+                        display: "inline-block",
+                        letterSpacing: "-0.02em",
+                      }}
+                    >
+                      {char}
+                    </Typography>
+                  </motion.span>
+                );
+              })}
+          </motion.div>
 
-        {/* The Hidden Infinity Symbol */}
-        {showInfinity && (
-          <Box sx={{ py: 10, display: "flex", justifyContent: "center" }}>
-            <motion.div
-              initial={{ opacity: 0, scale: 0 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ type: "spring", stiffness: 200, damping: 20 }}
-              whileHover={{
-                scale: 1.2,
-                rotate: 180,
-                filter: "drop-shadow(0 0 20px #03dac6)",
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ amount: 0.5 }}
+            variants={{
+              visible: {
+                transition: {
+                  staggerChildren: 0.03,
+                  delayChildren: 1.5, // Delay the second sentence slightly
+                },
+              },
+            }}
+            style={{
+              display: "flex",
+              flexWrap: "wrap",
+              justifyContent: "center",
+              maxWidth: "800px",
+              marginBottom: "32px",
+            }}
+          >
+            {`"The end is the beginning, and the beginning is the end"`
+              .split("")
+              .map((char, index) => (
+                <motion.span
+                  key={index}
+                  variants={{
+                    hidden: { opacity: 0, filter: "blur(10px)" },
+                    visible: {
+                      opacity: 1,
+                      filter: "blur(0px)",
+                      transition: {
+                        duration: 0.8,
+                        ease: "easeOut",
+                      },
+                    },
+                  }}
+                  style={{ display: "inline-block", whiteSpace: "pre" }}
+                >
+                  <Typography
+                    variant="body1"
+                    component="span"
+                    sx={{
+                      fontWeight: 400,
+                      fontStyle: "italic",
+                      color: "#888",
+                      display: "inline-block",
+                      letterSpacing: "0.05em",
+                      fontSize: "1.1rem",
+                    }}
+                  >
+                    {char}
+                  </Typography>
+                </motion.span>
+              ))}
+          </motion.div>
+
+          <motion.div
+            whileHover={{
+              scale: 1.2,
+              rotate: 180,
+              filter: "drop-shadow(0 0 20px #03dac6)",
+            }}
+            whileTap={{ scale: 0.9 }}
+            style={{ cursor: "pointer", display: "inline-block" }}
+            role="button"
+          >
+            <Typography
+              variant="h1"
+              aria-label="flag{infinite_scroll_madness}"
+              sx={{
+                fontSize: "10rem",
+                background: "linear-gradient(45deg, #03dac6, #6200ea)",
+                WebkitBackgroundClip: "text",
+                WebkitTextFillColor: "transparent",
+                lineHeight: 1,
               }}
-              whileTap={{ scale: 0.9 }}
-              style={{ cursor: "pointer" }}
-              role="button"
             >
-              <Typography
-                variant="h1"
-                aria-label="flag{infinite_scroll_madness}"
-                sx={{
-                  fontSize: "10rem",
-                  background: "linear-gradient(45deg, #03dac6, #6200ea)",
-                  WebkitBackgroundClip: "text",
-                  WebkitTextFillColor: "transparent",
-                  lineHeight: 1,
-                }}
-              >
-                ∞
-              </Typography>
-            </motion.div>
-          </Box>
-        )}
+              ∞
+            </Typography>
+          </motion.div>
+        </Box>
 
         {/* Reusable Submit Flag Dialog */}
         <SubmitFlag

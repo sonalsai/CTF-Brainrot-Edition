@@ -165,6 +165,7 @@ const SubmitFlag = ({
           <Box sx={{ mt: 1 }}>
             <TextField
               autoFocus
+              autoComplete="off"
               fullWidth
               value={flag}
               onChange={(e) => setFlag(e.target.value)}
