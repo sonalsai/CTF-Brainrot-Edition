@@ -1,9 +1,9 @@
 import { useState, useEffect, useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { Container, Typography, Box } from "@mui/material";
-import { Toaster } from "react-hot-toast";
 
 import SubmitFlag from "../components/SubmitFlag";
+import LevelIndicator from "../components/LevelIndicator";
 
 const CircleMe = () => {
   const scrollRef = useRef(null);
@@ -27,6 +27,7 @@ const CircleMe = () => {
         userSelect: "none",
       }}
     >
+      <LevelIndicator level={2} />
       <Container
         maxWidth="md"
         sx={{
@@ -300,8 +301,6 @@ const CircleMe = () => {
           successMessage="Infinity Conquered! ♾️"
           level={2}
         />
-
-        <Toaster />
       </Container>
     </Box>
   );

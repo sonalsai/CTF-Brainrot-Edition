@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { Container, Typography, Box } from "@mui/material";
-import { Toaster } from "react-hot-toast";
 import SubmitFlag from "../components/SubmitFlag";
+import LevelIndicator from "../components/LevelIndicator";
 
 const LastCommit = () => {
   return (
@@ -16,6 +16,7 @@ const LastCommit = () => {
         textAlign: "center",
       }}
     >
+      <LevelIndicator level={1} />
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
@@ -64,15 +65,12 @@ const LastCommit = () => {
         </Box>
       </motion.div>
 
-      {/* Reuse submit flag component */}
       <SubmitFlag
         expectedFlag={import.meta.env.VITE_FLAG1}
         onSuccessPath="/circle-around"
         successMessage="Path Cleared! 🚀"
         level={1}
       />
-
-      <Toaster />
     </Container>
   );
 };

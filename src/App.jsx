@@ -9,6 +9,8 @@ import WaitForIt from "./pages/5-WaitForIt";
 import ProtectedRoute from "./components/ProtectedRoute";
 import GameInstructions from "./components/GameInstructions";
 
+import { Toaster } from "react-hot-toast";
+
 const theme = createTheme({
   palette: {
     mode: "light",
@@ -31,6 +33,7 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
+      <Toaster />
       <BrowserRouter>
         <GameInstructions />
         <Routes>

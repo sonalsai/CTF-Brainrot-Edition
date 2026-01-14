@@ -2,6 +2,7 @@ import React from "react";
 import { Box, Container, Typography } from "@mui/material";
 import { motion } from "framer-motion";
 import SubmitFlag from "../components/SubmitFlag";
+import LevelIndicator from "../components/LevelIndicator";
 
 const DarkKnight = () => {
   return (
@@ -16,6 +17,7 @@ const DarkKnight = () => {
         textAlign: "center",
       }}
     >
+      <LevelIndicator level={4} />
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}

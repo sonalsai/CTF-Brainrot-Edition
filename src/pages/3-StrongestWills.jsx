@@ -2,6 +2,7 @@ import React from "react";
 import { Box, Container, Typography } from "@mui/material";
 import { motion } from "framer-motion";
 import SubmitFlag from "../components/SubmitFlag";
+import LevelIndicator from "../components/LevelIndicator";
 
 const StrongestWills = () => {
   return (
@@ -18,6 +19,7 @@ const StrongestWills = () => {
         overflow: "hidden",
       }}
     >
+      <LevelIndicator level={3} />
       {/* Background Atmosphere */}
       <Box
         sx={{

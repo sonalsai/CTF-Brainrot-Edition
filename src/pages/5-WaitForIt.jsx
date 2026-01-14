@@ -3,6 +3,7 @@ import { Box, Container, Typography, CircularProgress } from "@mui/material";
 import { motion, AnimatePresence } from "framer-motion";
 import SubmitFlag from "../components/SubmitFlag";
 import { MdHourglassEmpty } from "react-icons/md";
+import LevelIndicator from "../components/LevelIndicator";
 
 const WaitForIt = () => {
   const [seconds, setSeconds] = useState(0);
@@ -53,6 +54,7 @@ const WaitForIt = () => {
         fontFamily: "'Inter', sans-serif",
       }}
     >
+      <LevelIndicator level={5} />
       <Container maxWidth="sm" sx={{ textAlign: "center" }}>
         <AnimatePresence mode="wait">
           {!isComplete ? (
