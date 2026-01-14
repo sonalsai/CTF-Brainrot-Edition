@@ -6,6 +6,7 @@ import CircleMe from "./pages/2-CircleMe";
 import StrongestWills from "./pages/3-StrongestWills";
 import DarkKnight from "./pages/4-DrakKnight";
 import WaitForIt from "./pages/5-WaitForIt";
+import ProtectedRoute from "./components/ProtectedRoute";
 
 const theme = createTheme({
   palette: {
@@ -32,29 +33,44 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Home />} />
+          {/* Level 1 */}
           <Route path="/last-commit" element={<LastCommit />} />
-          <Route path="/circle-around" element={<CircleMe />} />
+          {/* Level 2 */}
           <Route
-            path="/time"
+            path="/circle-around"
             element={
-              <div
-                style={{
-                  color: "black",
-                  display: "flex",
-                  justifyContent: "center",
-                  marginTop: "50px",
-                }}
-              >
-                <h1>Level 3: Time (Coming Soon)</h1>
-              </div>
+              <ProtectedRoute requiredSolvedLevel={1}>
+                <CircleMe />
+              </ProtectedRoute>
             }
           />
+          {/* Level 3 */}
           <Route
             path={`/${import.meta.env.VITE_TASK3_URL}`}
-            element={<StrongestWills />}
+            element={
+              <ProtectedRoute requiredSolvedLevel={2}>
+                <StrongestWills />
+              </ProtectedRoute>
+            }
           />
-          <Route path="/dark-knight" element={<DarkKnight />} />
-          <Route path="/wait-for-it" element={<WaitForIt />} />
+          {/* Level 4 */}
+          <Route
+            path="/dark-knight"
+            element={
+              <ProtectedRoute requiredSolvedLevel={3}>
+                <DarkKnight />
+              </ProtectedRoute>
+            }
+          />
+          {/* Level 5 */}
+          <Route
+            path="/wait-for-it"
+            element={
+              <ProtectedRoute requiredSolvedLevel={4}>
+                <WaitForIt />
+              </ProtectedRoute>
+            }
+          />
         </Routes>
       </BrowserRouter>
     </ThemeProvider>

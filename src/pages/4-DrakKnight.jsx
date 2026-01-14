@@ -369,6 +369,7 @@ const DarkKnight = () => {
         expectedFlag={import.meta.env.VITE_FLAG4}
         onSuccessPath="/wait-for-it"
         successMessage="so you are serious..."
+        level={4}
       />
     </Container>
   );

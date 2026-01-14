@@ -14,11 +14,13 @@ import {
 import { FaArrowRight, FaFlag } from "react-icons/fa";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
+import { saveProgress } from "../utils/security";
 
 const SubmitFlag = ({
   expectedFlag,
   onSuccessPath,
   successMessage = "System Unlocked! 🔓",
+  level,
 }) => {
   const [open, setOpen] = useState(false);
   const [flag, setFlag] = useState("");
@@ -28,7 +30,7 @@ const SubmitFlag = ({
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     const refinedFlag = flag.trim().toLowerCase().replaceAll(" ", "_");
     if (refinedFlag === expectedFlag) {
       toast.success(successMessage, {
@@ -43,6 +45,12 @@ const SubmitFlag = ({
           fontWeight: "bold",
         },
       });
+
+      // Update progress securely
+      if (level) {
+        await saveProgress(level);
+      }
+
       setTimeout(() => {
         navigate(onSuccessPath);
       }, 1500);

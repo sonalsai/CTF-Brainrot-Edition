@@ -76,6 +76,7 @@ const StrongestWills = () => {
         expectedFlag={import.meta.env.VITE_FLAG3}
         onSuccessPath="/dark-knight"
         successMessage="Balance restored. 🧤"
+        level={3}
       />
     </Box>
   );

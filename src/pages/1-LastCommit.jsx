@@ -69,6 +69,7 @@ const LastCommit = () => {
         expectedFlag={import.meta.env.VITE_FLAG1}
         onSuccessPath="/circle-around"
         successMessage="Path Cleared! 🚀"
+        level={1}
       />
 
       <Toaster />

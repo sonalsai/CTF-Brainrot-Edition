@@ -232,6 +232,7 @@ const WaitForIt = () => {
         expectedFlag={import.meta.env.VITE_FLAG5}
         onSuccessPath="/"
         successMessage="Worth the wait! 🕰️"
+        level={5}
       />
     </Box>
   );
