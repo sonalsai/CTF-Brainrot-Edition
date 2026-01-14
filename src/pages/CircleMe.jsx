@@ -298,7 +298,7 @@ const CircleMe = () => {
           expectedFlag={
             import.meta.env.VITE_FLAG2 || "flag{infinite_scroll_madness}"
           }
-          onSuccessPath="/time"
+          onSuccessPath={`/${import.meta.env.VITE_TASK3_URL}`}
           successMessage="Infinity Conquered! ♾️"
         />
 

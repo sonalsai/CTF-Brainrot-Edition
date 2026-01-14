@@ -3,6 +3,7 @@ import { createTheme, ThemeProvider, CssBaseline } from "@mui/material";
 import Home from "./pages/Home";
 import LastCommit from "./pages/LastCommit";
 import CircleMe from "./pages/CircleMe";
+import StrongestWills from "./pages/StrongestWills";
 
 const theme = createTheme({
   palette: {
@@ -45,6 +46,10 @@ function App() {
                 <h1>Level 3: Time (Coming Soon)</h1>
               </div>
             }
+          />
+          <Route
+            path={`/${import.meta.env.VITE_TASK3_URL}`}
+            element={<StrongestWills />}
           />
         </Routes>
       </BrowserRouter>

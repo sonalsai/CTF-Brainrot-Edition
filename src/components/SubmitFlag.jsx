@@ -29,9 +29,6 @@ const SubmitFlag = ({
   const handleClose = () => setOpen(false);
 
   const handleSubmit = () => {
-    // Allow for exact match OR match without surrounding flag{} if user just typed the inner content
-    // But typically CTFs expect exact string. We will check exact match first.
-
     if (flag === expectedFlag) {
       toast.success(successMessage, {
         duration: 2000,
@@ -178,9 +175,6 @@ const SubmitFlag = ({
                 },
               }}
               InputProps={{
-                // We purposefully don't force prefix/suffix visual here to allow flexibility,
-                // or we can keep it if consistent across all tasks.
-                // Let's keep the user's preferred style.
                 startAdornment: (
                   <InputAdornment position="start">
                     <Typography
