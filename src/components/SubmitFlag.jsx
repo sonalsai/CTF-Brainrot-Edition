@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   Dialog,
@@ -14,7 +14,7 @@ import {
 import { FaArrowRight, FaFlag, FaBrain } from "react-icons/fa";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
-import { saveProgress } from "../utils/security";
+import { saveProgress, verifyAccess } from "../utils/security";
 
 const SubmitFlag = ({
   expectedFlag,
@@ -25,11 +25,28 @@ const SubmitFlag = ({
 }) => {
   const [open, setOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  const [isCompleted, setIsCompleted] = useState(false);
   const [flag, setFlag] = useState("");
   const [isHovered, setIsHovered] = useState(false);
   const navigate = useNavigate();
 
-  const handleOpen = () => setOpen(true);
+  useEffect(() => {
+    const checkCompletion = async () => {
+      if (level) {
+        const completed = await verifyAccess(level);
+        setIsCompleted(completed);
+      }
+    };
+    checkCompletion();
+  }, [level]);
+
+  const handleOpen = () => {
+    if (isCompleted) {
+      navigate(onSuccessPath);
+    } else {
+      setOpen(true);
+    }
+  };
   const handleClose = () => setOpen(false);
 
   const handleSubmit = async () => {
@@ -69,22 +86,45 @@ const SubmitFlag = ({
           bottom: 40,
           right: 30,
           zIndex: 100,
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "flex-end",
+          gap: 1,
         }}
       >
+        {isCompleted && (
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            style={{
+              background: "#00c853",
+              color: "white",
+              padding: "4px 12px",
+              borderRadius: "12px",
+              fontSize: "0.75rem",
+              fontWeight: "bold",
+              boxShadow: "0 2px 8px rgba(0, 200, 83, 0.4)",
+            }}
+          >
+            Level Completed ✅
+          </motion.div>
+        )}
         <motion.div
           layout
           onHoverStart={() => setIsHovered(true)}
           onHoverEnd={() => setIsHovered(false)}
           onClick={handleOpen}
           style={{
-            backgroundColor: "#6200ea",
+            backgroundColor: isCompleted ? "#52d884ff" : "#6200ea",
             borderRadius: "50px",
             cursor: "pointer",
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
             padding: "12px",
-            boxShadow: "0 8px 24px rgba(98, 0, 234, 0.3)",
+            boxShadow: isCompleted
+              ? "0 8px 24px rgba(3, 218, 198, 0.4)"
+              : "0 8px 24px rgba(98, 0, 234, 0.3)",
             height: "56px",
             minWidth: "56px",
           }}
@@ -94,7 +134,7 @@ const SubmitFlag = ({
           <motion.div layout style={{ display: "flex", alignItems: "center" }}>
             <FaArrowRight size={20} color="white" />
             <AnimatePresence>
-              {isHovered && (
+              {(isHovered || isCompleted) && (
                 <motion.span
                   initial={{ opacity: 0, width: 0, marginLeft: 0 }}
                   animate={{ opacity: 1, width: "auto", marginLeft: 12 }}
@@ -107,7 +147,7 @@ const SubmitFlag = ({
                     fontSize: "1rem",
                   }}
                 >
-                  Submit Flag
+                  {isCompleted ? "Next Level" : "Submit Flag"}
                 </motion.span>
               )}
             </AnimatePresence>
