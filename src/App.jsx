@@ -1,11 +1,11 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { createTheme, ThemeProvider, CssBaseline } from "@mui/material";
-import Home from "./pages/Home";
-import LastCommit from "./pages/LastCommit";
-import CircleMe from "./pages/CircleMe";
-import StrongestWills from "./pages/StrongestWills";
-import DarkKnight from "./pages/DrakKnight";
-import WaitForIt from "./pages/WaitForIt";
+import Home from "./pages/0-Home";
+import LastCommit from "./pages/1-LastCommit";
+import CircleMe from "./pages/2-CircleMe";
+import StrongestWills from "./pages/3-StrongestWills";
+import DarkKnight from "./pages/4-DrakKnight";
+import WaitForIt from "./pages/5-WaitForIt";
 
 const theme = createTheme({
   palette: {
