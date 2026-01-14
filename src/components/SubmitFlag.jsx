@@ -30,7 +30,6 @@ const SubmitFlag = ({
 
   const handleSubmit = () => {
     const refinedFlag = flag.trim().toLowerCase().replaceAll(" ", "_");
-    console.log(refinedFlag, expectedFlag);
     if (refinedFlag === expectedFlag) {
       toast.success(successMessage, {
         duration: 2000,

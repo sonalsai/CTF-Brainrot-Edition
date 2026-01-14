@@ -5,6 +5,7 @@ import LastCommit from "./pages/LastCommit";
 import CircleMe from "./pages/CircleMe";
 import StrongestWills from "./pages/StrongestWills";
 import DarkKnight from "./pages/DrakKnight";
+import WaitForIt from "./pages/WaitForIt";
 
 const theme = createTheme({
   palette: {
@@ -53,6 +54,7 @@ function App() {
             element={<StrongestWills />}
           />
           <Route path="/dark-knight" element={<DarkKnight />} />
+          <Route path="/wait-for-it" element={<WaitForIt />} />
         </Routes>
       </BrowserRouter>
     </ThemeProvider>

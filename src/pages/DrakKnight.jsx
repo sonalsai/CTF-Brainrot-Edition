@@ -367,7 +367,7 @@ const DarkKnight = () => {
 
       <SubmitFlag
         expectedFlag={import.meta.env.VITE_FLAG4}
-        onSuccessPath="/"
+        onSuccessPath="/wait-for-it"
         successMessage="so you are serious..."
       />
     </Container>
