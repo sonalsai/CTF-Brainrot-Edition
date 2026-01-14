@@ -35,7 +35,7 @@ const GameInstructions = () => {
         sx={{
           position: "fixed",
           top: 20,
-          right: 20,
+          right: 30,
           zIndex: 9999,
         }}
       >

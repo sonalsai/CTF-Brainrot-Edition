@@ -76,7 +76,7 @@ const SubmitFlag = ({
         sx={{
           position: "fixed",
           bottom: 40,
-          right: 40,
+          right: 30,
           zIndex: 100,
         }}
       >

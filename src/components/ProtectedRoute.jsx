@@ -26,7 +26,12 @@ const ProtectedRoute = ({ children, requiredSolvedLevel }) => {
     return (
       <Box
         sx={{
-          height: "100vh",
+          position: "fixed",
+          top: 0,
+          left: 0,
+          width: "100%",
+          height: "100%",
+          zIndex: 10000,
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
@@ -64,9 +69,13 @@ const ProtectedRoute = ({ children, requiredSolvedLevel }) => {
 
         <Typography
           variant="h6"
-          sx={{ mb: 4, maxWidth: "600px", color: "text.secondary" }}
+          sx={{
+            mb: 4,
+            maxWidth: "600px",
+            color: "error.main",
+          }}
         >
-          You have no access to this page. Solve the previous pages instead.
+          To access this page, please complete all previous levels
         </Typography>
 
         <Button
