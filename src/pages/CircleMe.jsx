@@ -295,9 +295,7 @@ const CircleMe = () => {
 
         {/* Reusable Submit Flag Dialog */}
         <SubmitFlag
-          expectedFlag={
-            import.meta.env.VITE_FLAG2 || "flag{infinite_scroll_madness}"
-          }
+          expectedFlag={import.meta.env.VITE_FLAG2}
           onSuccessPath={`/${import.meta.env.VITE_TASK3_URL}`}
           successMessage="Infinity Conquered! ♾️"
         />

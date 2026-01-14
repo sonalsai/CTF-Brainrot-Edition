@@ -29,7 +29,9 @@ const SubmitFlag = ({
   const handleClose = () => setOpen(false);
 
   const handleSubmit = () => {
-    if (flag === expectedFlag) {
+    const refinedFlag = flag.trim().toLowerCase().replaceAll(" ", "_");
+    console.log(refinedFlag, expectedFlag);
+    if (refinedFlag === expectedFlag) {
       toast.success(successMessage, {
         duration: 2000,
         position: "top-center",

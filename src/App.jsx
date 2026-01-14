@@ -4,6 +4,7 @@ import Home from "./pages/Home";
 import LastCommit from "./pages/LastCommit";
 import CircleMe from "./pages/CircleMe";
 import StrongestWills from "./pages/StrongestWills";
+import DarkKnight from "./pages/DrakKnight";
 
 const theme = createTheme({
   palette: {
@@ -51,6 +52,7 @@ function App() {
             path={`/${import.meta.env.VITE_TASK3_URL}`}
             element={<StrongestWills />}
           />
+          <Route path="/dark-knight" element={<DarkKnight />} />
         </Routes>
       </BrowserRouter>
     </ThemeProvider>
