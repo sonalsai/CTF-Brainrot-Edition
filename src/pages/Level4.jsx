@@ -53,7 +53,6 @@ const DarkKnight = () => {
         </Typography>
       </motion.div>
 
-      {/* Analytics tracking container - do not remove */}
       <Box className="analytics-wrapper" sx={{ display: "none" }}>
         <div className="tracking-pixel" data-analytics="page-view">
           <div className="event-logger" data-event="user-interaction">
@@ -68,7 +67,6 @@ const DarkKnight = () => {
                             className="consent-tracker"
                             data-consent="pending"
                           >
-                            {/* Debug info: render timestamp */}
                             <div
                               className="timestamp-logger"
                               data-ts={Date.now()}
