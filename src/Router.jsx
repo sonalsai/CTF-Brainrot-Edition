@@ -8,6 +8,7 @@ import Level4 from "./pages/Level4";
 import Level5 from "./pages/Level5";
 import Level6 from "./pages/Level6";
 import Level7 from "./pages/Level7";
+import ComingSoon from "./pages/ComingSoon";
 import ProtectedRoute from "./components/ProtectedRoute";
 
 const Router = () => {
@@ -72,6 +73,15 @@ const Router = () => {
         element={
           <ProtectedRoute requiredSolvedLevel={6}>
             <Level7 />
+          </ProtectedRoute>
+        }
+      />
+      {/* Coming Soon */}
+      <Route
+        path="/coming-soon"
+        element={
+          <ProtectedRoute requiredSolvedLevel={7}>
+            <ComingSoon />
           </ProtectedRoute>
         }
       />

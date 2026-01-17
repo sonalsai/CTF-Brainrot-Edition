@@ -192,7 +192,7 @@ const Level7 = () => {
 
       <SubmitFlag
         expectedFlag={import.meta.env.VITE_FLAG7}
-        onSuccessPath="/"
+        onSuccessPath="/coming-soon"
         successMessage="SIGNAL ESTABLISHED. 📡"
         level={7}
         taskMessage="You have reached the stars."
