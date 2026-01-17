@@ -2,23 +2,26 @@
 
 > "Prepare to debug the un-debuggable and decrypt the absurd."
 
-Welcome to **CTF: Brainrot Edition**, a chaotic, meme-filled, and surprisingly intellectual Capture The Flag challenge built with React. Navigate through a series of cryptic levels, solve riddles, inspect source code, and prove your brain hasn't completely rotted away.
+Welcome to **CTF: Brainrot Edition**, a chaotic, meme-filled, and surprisingly intellectual Capture The Flag challenge built with React. Navigate through a series of cryptic levels, solve riddles, inspect source code, decode signals, and prove your brain hasn't completely rotted away.
 
 ## 🚀 Levels
 
-The game consists of 5 progressive levels. You must solve the current level to unlock the next one.
+The game consists of 7 progressive levels (and potentially more coming soon). You must solve the current level to unlock the next one.
 
-1.  **Level 1: Last Commit** - _Deployment successful. Nothing seems wrong... or does it?_
-2.  **Level 2: The Circle Never Ends** - _Scroll into madness. ∞_
-3.  **Level 3: Strongest Wills** - _Perfectly balanced, as all things should be._
-4.  **Level 4: The Dark Knight** - _Everyone looks at the title. No one listens to the line._
-5.  **Level 5: Wait For It** - _Patience is a virtue (and a requirement)._
+1.  **Level 1: Last Commit**
+2.  **Level 2: The Circle Never Ends**
+3.  **Level 3: Strongest Wills**
+4.  **Level 4: The Dark Knight**
+5.  **Level 5: Wait For It**
+6.  **Level 6: Calculus of the Soul**
+7.  **Level 7: The Signal** 📡_
 
 ## 🔒 Security Features
 
 - **Progressive Unlocking**: Access to future levels is strictly restricted until you solve the previous one.
 - **Anti-Cheat System**: We use a `SHA-256` token-based verification system stored in `localStorage` to prevent simple value editing.
-- **Environment Variables**: Secrets are kept safe(ish) in `.env`.
+- **Environment Variables**: Secrets are kept safe in `.env` (mostly).
+- **Steganography & Metadata**: Hidden clues in image files and logs.
 
 ## 🛠️ Tech Stack
 
@@ -31,10 +34,10 @@ The game consists of 5 progressive levels. You must solve the current level to u
 ## 🎮 How to Play
 
 1.  **Start the Challenge**: Click the button on the home page.
-2.  **Find the Flag**: Flags are hidden in the UI, source code, console logs, or environmental variables.
-    - Format: `flag{some_text}`
-    - Inputs are case-insensitive.
-    - Spaces are automatically converted to underscores.
+2.  **Find the Flag**: Flags are hidden in the UI, source code, console logs, network requests, downloadables (images/logs), or environmental variables.
+    - Format: `flag{some_text}` (in code) but usually you just submit the `some_text` part.
+    - **Inputs are case-insensitive.**
+    - Spaces are automatically converted to underscores on submission.
 3.  **Submit**: Enter the flag contents (e.g., `some_text`) into the submission box.
 4.  **Advance**: Solving a level grants you a security token to access the next route.
 
@@ -57,11 +60,10 @@ The game consists of 5 progressive levels. You must solve the current level to u
 
 3.  **Set up environment variables**
     Create a `.env` file in the root directory (references provided in code, you'll figure it out 😉).
-
     - `VITE_FLAG1`: Flag for Level 1
-    - `VITE_FLAG2`: Flag for Level 2
-    - `VITE_TASK3_URL`: URL path for Level 3
-    - ...etc
+    - ...
+    - `VITE_FLAG7`: Flag for Level 7
+    - `VITE_SECURITY_SALT`: Salt for hash generation
 
 4.  **Start the development server**
     ```bash
