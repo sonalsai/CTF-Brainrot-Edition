@@ -1,6 +1,7 @@
 import { BrowserRouter } from "react-router-dom";
 import { createTheme, ThemeProvider, CssBaseline } from "@mui/material";
 import GameInstructions from "./components/GameInstructions";
+import MobileBlocker from "./components/MobileBlocker";
 import Router from "./Router";
 import { Toaster } from "react-hot-toast";
 
@@ -27,6 +28,7 @@ function App() {
     <ThemeProvider theme={theme}>
       <CssBaseline />
       <Toaster />
+      <MobileBlocker />
       <BrowserRouter>
         <GameInstructions />
         <Router />
