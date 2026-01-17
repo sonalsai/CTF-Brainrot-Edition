@@ -367,7 +367,7 @@ const DarkKnight = () => {
 
       <SubmitFlag
         expectedFlag={import.meta.env.VITE_FLAG4}
-        onSuccessPath="/wait-for-it"
+        onSuccessPath="/level5"
         successMessage="so you are serious..."
         level={4}
         taskMessage="You're the hero this codebase deserves."

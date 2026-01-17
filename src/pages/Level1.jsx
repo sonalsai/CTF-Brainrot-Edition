@@ -60,14 +60,14 @@ const LastCommit = () => {
             <strong>
               I need to be baptized by you, and do you come to me?
             </strong>
-            ?"
+            "
           </Typography>
         </Box>
       </motion.div>
 
       <SubmitFlag
         expectedFlag={import.meta.env.VITE_FLAG1}
-        onSuccessPath="/circle-around"
+        onSuccessPath="/level2"
         successMessage="Path Cleared! 🚀"
         level={1}
         taskMessage="Hope you didn't just guess that."

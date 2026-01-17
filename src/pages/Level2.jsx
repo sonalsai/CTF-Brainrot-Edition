@@ -297,7 +297,7 @@ const CircleMe = () => {
         {/* Reusable Submit Flag Dialog */}
         <SubmitFlag
           expectedFlag={import.meta.env.VITE_FLAG2}
-          onSuccessPath={`/${import.meta.env.VITE_TASK3_URL}`}
+          onSuccessPath="/level3"
           successMessage="Infinity Conquered! ♾️"
           level={2}
           taskMessage="Dizzier than a beyblade?"

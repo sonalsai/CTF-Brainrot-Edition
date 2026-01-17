@@ -83,7 +83,7 @@ const Home = () => {
             color="primary"
             sx={{ px: 5, py: 1.5, fontSize: "1.2rem", borderRadius: "50px" }}
             endIcon={<FaGamepad />}
-            onClick={() => navigate("/last-commit")}
+            onClick={() => navigate("/level1")}
           >
             Start Challenge
           </Button>
