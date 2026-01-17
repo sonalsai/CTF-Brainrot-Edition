@@ -124,7 +124,7 @@ const Level6 = () => {
 
       <SubmitFlag
         expectedFlag={import.meta.env.VITE_FLAG6}
-        onSuccessPath="/"
+        onSuccessPath="/level7"
         successMessage="Vow fulfilled. 🗝️"
         level={6}
         taskMessage="Calculus of the soul."

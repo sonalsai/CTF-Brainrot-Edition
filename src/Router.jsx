@@ -7,6 +7,7 @@ import Level3 from "./pages/Level3";
 import Level4 from "./pages/Level4";
 import Level5 from "./pages/Level5";
 import Level6 from "./pages/Level6";
+import Level7 from "./pages/Level7";
 import ProtectedRoute from "./components/ProtectedRoute";
 
 const Router = () => {
@@ -62,6 +63,15 @@ const Router = () => {
         element={
           <ProtectedRoute requiredSolvedLevel={5}>
             <Level6 />
+          </ProtectedRoute>
+        }
+      />
+      {/* Level 7 */}
+      <Route
+        path="/level7"
+        element={
+          <ProtectedRoute requiredSolvedLevel={6}>
+            <Level7 />
           </ProtectedRoute>
         }
       />
