@@ -64,56 +64,72 @@ const CircleMe = () => {
                 letterSpacing: "-0.05em",
               }}
             >
-              The Circle Never Ends
+              The Common Loop
             </Typography>
           </motion.div>
 
-          {/* Infinite Spinning Ring with Trace Effect */}
+          {/* Refined Mechanical Loop */}
           <motion.div
             style={{
-              scale, // Scales up on scroll
-              rotate, // Rotates on scroll
+              scale,
+              rotate,
+              width: "300px",
+              height: "300px",
+              position: "relative",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
             }}
           >
+            {/* Static Background Track for depth */}
+            <div
+              style={{
+                position: "absolute",
+                width: "100%",
+                height: "100%",
+                borderRadius: "50%",
+                border: "1px solid rgba(255,255,255,0.05)",
+                boxShadow: "0 0 30px rgba(98, 0, 234, 0.1) inset",
+              }}
+            />
+
+            {/* Main Plasma Ring */}
             <motion.div
               animate={{ rotate: 360 }}
-              transition={{ repeat: Infinity, duration: 1.5, ease: "linear" }}
+              transition={{ repeat: Infinity, duration: 3, ease: "linear" }}
               style={{
-                width: "300px",
-                height: "300px",
-                position: "relative",
-                borderRadius: "50%",
+                width: "100%",
+                height: "100%",
+                position: "absolute",
               }}
             >
-              {/* The "Trace" Gradient Ring */}
               <div
                 style={{
                   position: "absolute",
                   inset: 0,
                   borderRadius: "50%",
                   background:
-                    "conic-gradient(from 0deg, transparent 0%, rgba(98, 0, 234, 0.1) 40%, #03dac6 80%, #ffffff 100%)",
-                  mask: "radial-gradient(closest-side, transparent 78%, black 79%)",
+                    "conic-gradient(from 0deg, transparent 0%, rgba(98, 0, 234, 0.1) 50%, #6200ea 80%, #03dac6 100%)",
+                  mask: "radial-gradient(closest-side, transparent 85%, black 86%)",
                   WebkitMask:
-                    "radial-gradient(closest-side, transparent 78%, black 79%)",
-                  filter: "drop-shadow(0 0 10px rgba(3, 218, 198, 0.4))",
-                }}
-              />
-
-              <div
-                style={{
-                  position: "absolute",
-                  top: 0,
-                  left: "50%",
-                  width: "20px", // Match stroke approx width
-                  height: "20px",
-                  borderRadius: "50%",
-                  background: "#ffffff",
-                  transform: "translate(-50%, -50%)",
-                  // Removed massive box shadows
+                    "radial-gradient(closest-side, transparent 85%, black 86%)",
+                  filter: "drop-shadow(0 0 10px rgba(3, 218, 198, 0.5))",
                 }}
               />
             </motion.div>
+
+            {/* Inner Stabilizer Ring (Decorative) */}
+            <motion.div
+              animate={{ rotate: -360 }}
+              transition={{ repeat: Infinity, duration: 7, ease: "linear" }}
+              style={{
+                position: "absolute",
+                width: "70%",
+                height: "70%",
+                borderRadius: "50%",
+                border: "1px dashed rgba(255,255,255,0.1)",
+              }}
+            />
           </motion.div>
 
           <motion.div
@@ -131,7 +147,8 @@ const CircleMe = () => {
                 maxWidth: "600px",
               }}
             >
-              “He said the answer was hidden in underground”
+              “This simple loop has two sides (Inside & Outside). <br /> I need
+              a shape with only one.”
             </Typography>
           </motion.div>
         </Box>
@@ -166,50 +183,45 @@ const CircleMe = () => {
               marginBottom: "16px",
             }}
           >
-            {"Oh you caught me! \n But can you escape the loop?"
-              .split("")
-              .map((char, index) => {
-                if (char === "\n") {
-                  return (
-                    <div
-                      key={index}
-                      style={{ flexBasis: "100%", height: "0" }}
-                    />
-                  );
-                }
+            {"A twist in the fabric...".split("").map((char, index) => {
+              if (char === "\n") {
                 return (
-                  <motion.span
-                    key={index}
-                    variants={{
-                      hidden: { opacity: 0, y: 20, scale: 0.5 },
-                      visible: {
-                        opacity: 1,
-                        y: 0,
-                        scale: 1,
-                        transition: {
-                          type: "spring",
-                          stiffness: 300,
-                          damping: 20,
-                        },
-                      },
-                    }}
-                    style={{ display: "inline-block", whiteSpace: "pre" }}
-                  >
-                    <Typography
-                      variant="h3"
-                      component="span"
-                      sx={{
-                        fontWeight: 900,
-                        color: "#c4c3c3ff",
-                        display: "inline-block",
-                        letterSpacing: "-0.02em",
-                      }}
-                    >
-                      {char}
-                    </Typography>
-                  </motion.span>
+                  <div key={index} style={{ flexBasis: "100%", height: "0" }} />
                 );
-              })}
+              }
+              return (
+                <motion.span
+                  key={index}
+                  variants={{
+                    hidden: { opacity: 0, y: 20, scale: 0.5 },
+                    visible: {
+                      opacity: 1,
+                      y: 0,
+                      scale: 1,
+                      transition: {
+                        type: "spring",
+                        stiffness: 300,
+                        damping: 20,
+                      },
+                    },
+                  }}
+                  style={{ display: "inline-block", whiteSpace: "pre" }}
+                >
+                  <Typography
+                    variant="h3"
+                    component="span"
+                    sx={{
+                      fontWeight: 900,
+                      color: "#c4c3c3ff",
+                      display: "inline-block",
+                      letterSpacing: "-0.02em",
+                    }}
+                  >
+                    {char}
+                  </Typography>
+                </motion.span>
+              );
+            })}
           </motion.div>
 
           <motion.div
@@ -232,7 +244,7 @@ const CircleMe = () => {
               marginBottom: "32px",
             }}
           >
-            {`"The end is the beginning, and the beginning is the end"`
+            {`"Now I have only one side, and I go on forever."`
               .split("")
               .map((char, index) => (
                 <motion.span
