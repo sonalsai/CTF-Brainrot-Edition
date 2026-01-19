@@ -55,7 +55,10 @@ const WaitForIt = () => {
       }}
     >
       <LevelIndicator level={5} />
-      <Container maxWidth="sm" sx={{ textAlign: "center" }}>
+      <Container
+        maxWidth={false}
+        sx={{ maxWidth: "700px", textAlign: "center" }}
+      >
         <AnimatePresence mode="wait">
           {!isComplete ? (
             <motion.div
@@ -157,14 +160,14 @@ const WaitForIt = () => {
                 <CircularProgress
                   variant="determinate"
                   value={100}
-                  size={180}
+                  size={220}
                   thickness={2}
                   sx={{ color: "#e0e0e0", position: "absolute" }}
                 />
                 <CircularProgress
                   variant="determinate"
                   value={100}
-                  size={180}
+                  size={220}
                   thickness={4}
                   sx={{
                     color: "#4caf50",
