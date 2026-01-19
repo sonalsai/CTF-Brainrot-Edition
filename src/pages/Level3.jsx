@@ -3,6 +3,7 @@ import { Box, Container, Typography } from "@mui/material";
 import { motion } from "framer-motion";
 import SubmitFlag from "../components/SubmitFlag";
 import LevelIndicator from "../components/LevelIndicator";
+import { FaLongArrowAltUp } from "react-icons/fa";
 
 const StrongestWills = () => {
   return (
@@ -10,7 +11,7 @@ const StrongestWills = () => {
       sx={{
         minHeight: "100vh",
         width: "100vw",
-        bgcolor: "#000000",
+        bgcolor: "#f3e5f5", // Light Lavender
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
@@ -20,27 +21,37 @@ const StrongestWills = () => {
       }}
     >
       <LevelIndicator level={3} />
-      {/* Background Atmosphere */}
+
+      {/* 1. Ethereal Sky Background */}
       <Box
         sx={{
           position: "absolute",
-          top: "50%",
-          left: "50%",
-          width: "150vw",
-          height: "150vh",
+          inset: 0,
           background:
-            "radial-gradient(circle, rgba(98,0,234,0.15) 0%, rgba(0,0,0,1) 70%)",
-          transform: "translate(-50%, -50%)",
+            "radial-gradient(circle at 50% 30%, #ffffff 0%, #f3e5f5 50%, #e1bee7 100%)",
           zIndex: 0,
-          animation: "pulse 8s infinite ease-in-out",
-          "@keyframes pulse": {
-            "0%": { opacity: 0.5 },
-            "50%": { opacity: 0.8 },
-            "100%": { opacity: 0.5 },
-          },
         }}
       />
 
+      {/* 2. Soft Cloud/Aura Animation */}
+      <Box
+        component={motion.div}
+        animate={{ opacity: [0.4, 0.7, 0.4], scale: [1, 1.1, 1] }}
+        transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+        sx={{
+          position: "absolute",
+          top: "10%",
+          left: "30%",
+          width: "60vw",
+          height: "60vw",
+          background:
+            "radial-gradient(circle, rgba(149, 117, 205, 0.2) 0%, transparent 60%)", // Soft Violet Aura
+          filter: "blur(80px)",
+          zIndex: 0,
+        }}
+      />
+
+      {/* 3. Main Content Card */}
       <Container
         maxWidth="md"
         sx={{
@@ -49,28 +60,129 @@ const StrongestWills = () => {
           flexDirection: "column",
           alignItems: "center",
           justifyContent: "center",
-          height: "100%",
+          position: "relative",
         }}
       >
         <motion.div
-          initial={{ opacity: 0, scale: 0.9 }}
+          initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 1.5, ease: "easeOut" }}
+          transition={{ duration: 1.2, ease: "easeOut" }}
+          style={{ width: "100%" }}
         >
-          <Typography
-            variant="h2"
+          {/* Glass Card - Light Version */}
+          <Box
             sx={{
-              color: "#fff",
-              fontFamily: '"Cinzel", "serif"',
-              fontWeight: 700,
+              position: "relative",
+              padding: { xs: 4, md: 8 },
+              borderRadius: "32px",
+              background: "rgba(255, 255, 255, 0.6)",
+              backdropFilter: "blur(20px)",
+              border: "1px solid rgba(255, 255, 255, 0.8)",
+              boxShadow: "0 20px 60px rgba(103, 58, 183, 0.15)", // Soft violet shadow
               textAlign: "center",
-              lineHeight: 1.4,
-              textShadow: "0 0 20px rgba(156, 39, 176, 0.7)",
-              mb: 4,
+              overflow: "hidden",
             }}
           >
-            "The hardest choices require the strongest wills"
-          </Typography>
+            {/* Top Shine */}
+            <Box
+              sx={{
+                position: "absolute",
+                top: 0,
+                left: 0,
+                right: 0,
+                height: "1px",
+                background:
+                  "linear-gradient(90deg, transparent, rgba(149, 117, 205, 0.4), transparent)",
+              }}
+            />
+
+            {/* The Quote */}
+            <Typography
+              variant="h3"
+              sx={{
+                color: "#4a148c", // Deep Purple Text
+                fontFamily: '"Poppins", "Ubuntu", "sans-serif"',
+                fontWeight: 700,
+                lineHeight: 1.4,
+                mb: 6,
+                fontSize: { xs: "1.8rem", md: "2.8rem" },
+              }}
+            >
+              "The hardest choices require the strongest wills"
+            </Typography>
+
+            {/* Ornamental Divider */}
+            <Box
+              sx={{
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                gap: 2,
+                mb: 6,
+                opacity: 0.6,
+              }}
+            >
+              <Box
+                sx={{
+                  width: "60px",
+                  height: "1px",
+                  background: "linear-gradient(90deg, transparent, #7e57c2)",
+                }}
+              />
+              <Box
+                sx={{
+                  width: "8px",
+                  height: "8px",
+                  transform: "rotate(45deg)",
+                  bgcolor: "#7e57c2", // Medium Purple
+                }}
+              />
+              <Box
+                sx={{
+                  width: "60px",
+                  height: "1px",
+                  background: "linear-gradient(90deg, #7e57c2, transparent)",
+                }}
+              />
+            </Box>
+
+            {/* The Hint Section */}
+            <Box
+              sx={{
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
+                gap: 1,
+              }}
+            >
+              <motion.div
+                animate={{ y: [-5, 5, -5] }}
+                transition={{
+                  duration: 3,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                }}
+              >
+                <FaLongArrowAltUp
+                  size={28}
+                  color="#673ab7" // Deep Purple Icon
+                />
+              </motion.div>
+
+              <Typography
+                variant="overline"
+                sx={{
+                  color: "#673ab7",
+                  letterSpacing: "0.3em",
+                  fontSize: "0.8rem",
+                  fontWeight: 600,
+                  mt: 1,
+                }}
+              >
+                Seek The Path Above
+              </Typography>
+            </Box>
+          </Box>
         </motion.div>
       </Container>
 
