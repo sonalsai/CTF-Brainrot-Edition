@@ -51,16 +51,16 @@ const LastCommit = () => {
           <Typography
             variant="caption"
             sx={{
-              fontSize: "0.6rem",
+              fontSize: "0.8rem",
               color: "text.disabled",
               fontStyle: "italic",
             }}
           >
-            "If nothing is wrong, why did he commit{" "}
+            "The numbers in the verse reveal the hidden shape..."
+            <br />
             <strong>
-              I need to be baptized by you, and do you come to me?
+              "I need to be baptized by you, and do you come to me?"
             </strong>
-            "
           </Typography>
         </Box>
       </motion.div>
