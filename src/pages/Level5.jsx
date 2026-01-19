@@ -221,7 +221,7 @@ const WaitForIt = () => {
                 You waited long enough.
               </Typography>
               <Typography variant="body1" color="text.secondary" sx={{ mb: 4 }}>
-                The anticipation was the best part, right?
+                Hope you packed your towel for the journey across the stars.
               </Typography>
             </motion.div>
           )}
