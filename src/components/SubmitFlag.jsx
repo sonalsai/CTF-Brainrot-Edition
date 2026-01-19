@@ -65,6 +65,7 @@ const SubmitFlag = ({
       }, 3000);
     } else {
       toast.error("Incorrect Flag. Try again! 🚫", {
+        id: "incorrect-flag",
         position: "top-center",
         style: {
           background: "#1a1a1a",
