@@ -12,9 +12,9 @@ The game consists of 7 progressive levels (and potentially more coming soon). Yo
 2.  **Level 2: The Circle Never Ends**
 3.  **Level 3: Strongest Wills**
 4.  **Level 4: The Dark Knight**
-5.  **Level 5: Wait For It**
-6.  **Level 6: Calculus of the Soul**
-7.  **Level 7: The Signal** 📡_
+5.  **Level 5: The Ultimate Answer**
+6.  **Level 6: The Mathematical Truth**
+7.  **Level 7: The Signal** 📡
 
 ## 🔒 Security Features
 
@@ -34,7 +34,7 @@ The game consists of 7 progressive levels (and potentially more coming soon). Yo
 ## 🎮 How to Play
 
 1.  **Start the Challenge**: Click the button on the home page.
-2.  **Find the Flag**: Flags are hidden in the UI, source code, console logs, network requests, downloadables (images/logs), or environmental variables.
+2.  **Find the Flag**: Flags are hidden in the UI, source code, console logs, network requests, downloadables (images/logs), external links, or environmental variables.
     - Format: `flag{some_text}` (in code) but usually you just submit the `some_text` part.
     - **Inputs are case-insensitive.**
     - Spaces are automatically converted to underscores on submission.
