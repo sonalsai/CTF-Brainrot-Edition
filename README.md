@@ -1,4 +1,7 @@
-# 🧠 CTF: Brainrot Edition
+<div align="center">
+  <img src="src/assets/images/brain.svg" alt="Brainrot Logo" width="120" />
+  <h1>CTF: Brainrot Edition</h1>
+</div>
 
 > "Prepare to debug the un-debuggable and decrypt the absurd."
 
