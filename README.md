@@ -63,10 +63,10 @@ The game consists of 7 progressive levels (and potentially more coming soon). Yo
 
 3.  **Set up environment variables**
     Create a `.env` file in the root directory (references provided in code, you'll figure it out 😉).
-    - `VITE_FLAG1`: Flag for Level 1
+    - `FLAG1`: Flag for Level 1
     - ...
-    - `VITE_FLAG7`: Flag for Level 7
-    - `VITE_SECURITY_SALT`: Salt for hash generation
+    - `FLAG7`: Flag for Level 7
+    - `SECURITY_SALT`: Salt for hash generation
 
 4.  **Start the development server**
     ```bash

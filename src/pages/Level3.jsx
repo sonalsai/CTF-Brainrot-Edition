@@ -187,7 +187,7 @@ const StrongestWills = () => {
       </Container>
 
       <SubmitFlag
-        expectedFlag={import.meta.env.VITE_FLAG3}
+        expectedFlag={import.meta.env.FLAG3}
         onSuccessPath="/level4"
         successMessage="Balance restored. 🧤"
         level={3}

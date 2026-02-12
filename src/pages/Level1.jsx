@@ -66,7 +66,7 @@ const LastCommit = () => {
       </motion.div>
 
       <SubmitFlag
-        expectedFlag={import.meta.env.VITE_FLAG1}
+        expectedFlag={import.meta.env.FLAG1}
         onSuccessPath="/level2"
         successMessage="Path Cleared! 🚀"
         level={1}
