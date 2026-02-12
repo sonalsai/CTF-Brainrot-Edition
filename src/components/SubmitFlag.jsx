@@ -162,20 +162,21 @@ const SubmitFlag = ({
         onClose={handleClose}
         maxWidth="sm"
         fullWidth
-        PaperProps={{
-          sx: {
-            borderRadius: "24px",
-            padding: 2,
-            boxShadow: "0 25px 50px -12px rgba(0, 0, 0, 0.25)",
-            backgroundImage:
-              "linear-gradient(to bottom right, #ffffff, #f8f9fa)",
+        slotProps={{
+          paper: {
+            sx: {
+              borderRadius: "24px",
+              padding: 2,
+              boxShadow: "0 25px 50px -12px rgba(0, 0, 0, 0.25)",
+              backgroundImage:
+                "linear-gradient(to bottom right, #ffffff, #f8f9fa)",
+            },
           },
-        }}
-        TransitionComponent={motion.div}
-        TransitionProps={{
-          initial: { opacity: 0, y: 20 },
-          animate: { opacity: 1, y: 0 },
-          exit: { opacity: 0, y: 20 },
+          transition: {
+            initial: { opacity: 0, y: 20 },
+            animate: { opacity: 1, y: 0 },
+            exit: { opacity: 0, y: 20 },
+          },
         }}
       >
         <DialogTitle
@@ -222,35 +223,37 @@ const SubmitFlag = ({
                   color: "#333", // Ensure text visibility
                 },
               }}
-              InputProps={{
-                startAdornment: (
-                  <InputAdornment position="start">
-                    <Typography
-                      variant="body1"
-                      sx={{
-                        fontFamily: "monospace",
-                        fontWeight: 700,
-                        color: "text.secondary",
-                      }}
-                    >
-                      flag&#123;
-                    </Typography>
-                  </InputAdornment>
-                ),
-                endAdornment: (
-                  <InputAdornment position="end">
-                    <Typography
-                      variant="body1"
-                      sx={{
-                        fontFamily: "monospace",
-                        fontWeight: 700,
-                        color: "text.secondary",
-                      }}
-                    >
-                      &#125;
-                    </Typography>
-                  </InputAdornment>
-                ),
+              slotProps={{
+                input: {
+                  startAdornment: (
+                    <InputAdornment position="start">
+                      <Typography
+                        variant="body1"
+                        sx={{
+                          fontFamily: "monospace",
+                          fontWeight: 700,
+                          color: "text.secondary",
+                        }}
+                      >
+                        flag&#123;
+                      </Typography>
+                    </InputAdornment>
+                  ),
+                  endAdornment: (
+                    <InputAdornment position="end">
+                      <Typography
+                        variant="body1"
+                        sx={{
+                          fontFamily: "monospace",
+                          fontWeight: 700,
+                          color: "text.secondary",
+                        }}
+                      >
+                        &#125;
+                      </Typography>
+                    </InputAdornment>
+                  ),
+                },
               }}
             />
           </Box>

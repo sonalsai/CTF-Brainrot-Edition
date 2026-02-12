@@ -63,19 +63,20 @@ const GameInstructions = () => {
         onClose={() => setOpen(false)}
         maxWidth="sm"
         fullWidth
-        PaperProps={{
-          sx: {
-            borderRadius: "24px",
-            padding: 1,
-            backgroundImage: "linear-gradient(135deg, #fff 0%, #f3e5f5 100%)",
-            border: "2px solid #6200ea",
+        slotProps={{
+          paper: {
+            sx: {
+              borderRadius: "24px",
+              padding: 1,
+              backgroundImage: "linear-gradient(135deg, #fff 0%, #f3e5f5 100%)",
+              border: "2px solid #6200ea",
+            },
           },
-        }}
-        TransitionComponent={motion.div}
-        TransitionProps={{
-          initial: { opacity: 0, scale: 0.8 },
-          animate: { opacity: 1, scale: 1 },
-          exit: { opacity: 0, scale: 0.8 },
+          transition: {
+            initial: { opacity: 0, scale: 0.8 },
+            animate: { opacity: 1, scale: 1 },
+            exit: { opacity: 0, scale: 0.8 },
+          },
         }}
       >
         <DialogTitle sx={{ textAlign: "center" }}>
@@ -114,10 +115,10 @@ const GameInstructions = () => {
                 }
                 secondary={
                   <Box component="span" sx={{ display: "block", mt: 1 }}>
-                    <Typography variant="body2" paragraph>
+                    <Typography variant="body2" sx={{ mb: 1 }}>
                       • Case doesn't matter (we handle it).
                     </Typography>
-                    <Typography variant="body2" paragraph>
+                    <Typography variant="body2" sx={{ mb: 1 }}>
                       • Spaces are automatically converted to underscores.
                     </Typography>
                     <Box

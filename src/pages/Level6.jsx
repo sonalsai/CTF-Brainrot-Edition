@@ -169,15 +169,17 @@ const Level6 = () => {
       <Dialog
         open={open}
         onClose={handleClose}
-        PaperProps={{
-          sx: {
-            bgcolor: "#ffffff",
-            color: "#333",
-            borderRadius: "24px",
-            boxShadow: "0 25px 50px -12px rgba(0, 0, 0, 0.25)",
-            minWidth: "320px",
-            maxWidth: "400px",
-            padding: "8px",
+        slotProps={{
+          paper: {
+            sx: {
+              bgcolor: "#ffffff",
+              color: "#333",
+              borderRadius: "24px",
+              boxShadow: "0 25px 50px -12px rgba(0, 0, 0, 0.25)",
+              minWidth: "320px",
+              maxWidth: "400px",
+              padding: "8px",
+            },
           },
         }}
       >
@@ -219,20 +221,22 @@ const Level6 = () => {
             }}
             error={error}
             helperText={error ? "Verification failed." : ""}
-            InputProps={{
-              style: {
-                fontFamily: "'Roboto Mono', monospace",
-                backgroundColor: "#f1f5f9",
-                borderRadius: "12px",
-                fontSize: "1rem",
-              },
-              sx: {
-                "& fieldset": { border: "none" },
-                "&:hover fieldset": { border: "none" },
-                "&.Mui-focused fieldset": { border: "1px solid #1976d2" }, // Subtle focus border
-                "&.Mui-focused": {
-                  bgcolor: "#fff",
-                  boxShadow: "0 0 0 4px rgba(25, 118, 210, 0.1)",
+            slotProps={{
+              input: {
+                style: {
+                  fontFamily: "'Roboto Mono', monospace",
+                  backgroundColor: "#f1f5f9",
+                  borderRadius: "12px",
+                  fontSize: "1rem",
+                },
+                sx: {
+                  "& fieldset": { border: "none" },
+                  "&:hover fieldset": { border: "none" },
+                  "&.Mui-focused fieldset": { border: "1px solid #1976d2" }, // Subtle focus border
+                  "&.Mui-focused": {
+                    bgcolor: "#fff",
+                    boxShadow: "0 0 0 4px rgba(25, 118, 210, 0.1)",
+                  },
                 },
               },
             }}
