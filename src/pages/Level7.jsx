@@ -15,7 +15,7 @@ const Level7 = () => {
   const [stage, setStage] = useState(0);
   const [decodedMsg, setDecodedMsg] = useState("");
   const [currentSeq, setCurrentSeq] = useState("");
-  const targetMessage = import.meta.env.VITE_TELEMETRY_MSG;
+  const targetMessage = import.meta.env.TELEMETRY_MSG;
 
   const handleDownloadLog = () => {
     const link = document.createElement("a");
@@ -326,7 +326,7 @@ const Level7 = () => {
       </Box>
 
       <SubmitFlag
-        expectedFlag={import.meta.env.VITE_FLAG7}
+        expectedFlag={import.meta.env.FLAG7}
         onSuccessPath="/coming-soon"
         successMessage="SIGNAL ESTABLISHED. 📡"
         level={7}

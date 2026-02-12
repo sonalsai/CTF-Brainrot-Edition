@@ -29,11 +29,11 @@ const Router = () => {
       {/* Level 3 Redirect */}
       <Route
         path="/level3"
-        element={<Navigate to={`/${import.meta.env.VITE_TASK3_URL}`} replace />}
+        element={<Navigate to={`/${import.meta.env.TASK3_URL}`} replace />}
       />
       {/* Level 3 Actual */}
       <Route
-        path={`/${import.meta.env.VITE_TASK3_URL}`}
+        path={`/${import.meta.env.TASK3_URL}`}
         element={
           <ProtectedRoute requiredSolvedLevel={2}>
             <Level3 />

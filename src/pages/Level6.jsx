@@ -16,7 +16,7 @@ import SubmitFlag from "../components/SubmitFlag";
 import { PiMathOperationsBold } from "react-icons/pi";
 
 const Level6 = () => {
-  const doorLink = import.meta.env.VITE_DOOR_URL;
+  const doorLink = import.meta.env.DOOR_URL;
   const [open, setOpen] = useState(false);
   const [keyInput, setKeyInput] = useState("");
   const [error, setError] = useState(false);
@@ -29,7 +29,7 @@ const Level6 = () => {
   };
 
   const handleSubmit = () => {
-    if (keyInput === import.meta.env.VITE_DOOR_KEY) {
+    if (keyInput === import.meta.env.DOOR_KEY) {
       window.open(doorLink, "_blank");
       handleClose();
     } else {
@@ -284,7 +284,7 @@ const Level6 = () => {
       </Dialog>
 
       <SubmitFlag
-        expectedFlag={import.meta.env.VITE_FLAG6}
+        expectedFlag={import.meta.env.FLAG6}
         onSuccessPath="/level7"
         successMessage="Solution verified."
         level={6}

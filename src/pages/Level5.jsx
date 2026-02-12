@@ -234,7 +234,7 @@ const WaitForIt = () => {
             `}
       </style>
       <SubmitFlag
-        expectedFlag={import.meta.env.VITE_FLAG5}
+        expectedFlag={import.meta.env.FLAG5}
         onSuccessPath="/level6"
         successMessage="Worth the wait! 🕰️"
         level={5}

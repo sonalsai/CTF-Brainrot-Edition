@@ -8,7 +8,7 @@ const sha256 = async (message) => {
 };
 
 export const generateToken = async (level) => {
-	const SALT = import.meta.env.VITE_SECURITY_SALT;
+	const SALT = import.meta.env.SECURITY_SALT;
 	return await sha256(`${SALT}_LEVEL_${level}_COMPLETED`);
 };
 
