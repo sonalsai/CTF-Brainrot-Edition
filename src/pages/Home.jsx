@@ -64,7 +64,7 @@ const Home = () => {
           animate={{ opacity: 1 }}
           transition={{ delay: 1, duration: 1 }}
         >
-          <Typography variant="h5" color="text.secondary" paragraph>
+          <Typography variant="h5" color="text.secondary" sx={{ mb: 2 }}>
             Welcome to the ultimate challenge for your neurons. Prepare to debug
             the un-debuggable and decrypt the absurd.
           </Typography>

@@ -109,8 +109,7 @@ const ComingSoon = () => {
           <Typography
             variant="h5"
             color="text.secondary"
-            paragraph
-            sx={{ maxWidth: "600px" }}
+            sx={{ maxWidth: "600px", mb: 2 }}
           >
             You have proven your worth, but the simulation is evolving.
             <br />
@@ -153,17 +152,18 @@ const ComingSoon = () => {
       <Dialog
         open={open}
         onClose={handleClose}
-        PaperProps={{
-          sx: {
-            borderRadius: "24px",
-            p: 2,
-            boxShadow: "0 25px 50px -12px rgba(0, 0, 0, 0.25)",
+        slotProps={{
+          paper: {
+            sx: {
+              borderRadius: "24px",
+              p: 2,
+              boxShadow: "0 25px 50px -12px rgba(0, 0, 0, 0.25)",
+            },
           },
-        }}
-        TransitionComponent={motion.div}
-        TransitionProps={{
-          initial: { opacity: 0, y: 20 },
-          animate: { opacity: 1, y: 0 },
+          transition: {
+            initial: { opacity: 0, y: 20 },
+            animate: { opacity: 1, y: 0 },
+          },
         }}
       >
         <DialogTitle
