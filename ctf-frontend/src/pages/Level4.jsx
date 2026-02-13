@@ -85,7 +85,6 @@ const DarkKnight = () => {
       </motion.div>
 
       <SubmitFlag
-        expectedFlag={import.meta.env.FLAG4}
         onSuccessPath="/level5"
         successMessage="so you are serious..."
         level={4}

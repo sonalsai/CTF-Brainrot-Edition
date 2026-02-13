@@ -14,9 +14,11 @@ import { motion } from "framer-motion";
 import LevelIndicator from "../components/LevelIndicator";
 import SubmitFlag from "../components/SubmitFlag";
 import { PiMathOperationsBold } from "react-icons/pi";
+import toast from "react-hot-toast";
+
+const API_BASE = import.meta.env.VITE_API_URL || "";
 
 const Level6 = () => {
-  const doorLink = import.meta.env.DOOR_URL;
   const [open, setOpen] = useState(false);
   const [keyInput, setKeyInput] = useState("");
   const [error, setError] = useState(false);
@@ -28,11 +30,22 @@ const Level6 = () => {
     setKeyInput("");
   };
 
-  const handleSubmit = () => {
-    if (keyInput === import.meta.env.DOOR_KEY) {
-      window.open(doorLink, "_blank");
-      handleClose();
-    } else {
+  const handleSubmit = async () => {
+    try {
+      const response = await fetch(`${API_BASE}/api/levels/door/verify`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ key: keyInput }),
+      });
+      const data = await response.json();
+      if (data.valid && data.door_url) {
+        window.open(data.door_url, "_blank");
+        handleClose();
+      } else {
+        setError(true);
+      }
+    } catch {
+      toast.error("Network error. Is the backend running?");
       setError(true);
     }
   };
@@ -288,7 +301,6 @@ const Level6 = () => {
       </Dialog>
 
       <SubmitFlag
-        expectedFlag={import.meta.env.FLAG6}
         onSuccessPath="/level7"
         successMessage="Solution verified."
         level={6}

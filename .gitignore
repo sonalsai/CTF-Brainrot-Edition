@@ -7,10 +7,20 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
-node_modules
-dist
-dist-ssr
+# Frontend
+ctf-frontend/node_modules
+ctf-frontend/dist
+ctf-frontend/dist-ssr
 *.local
+
+# Backend (Python)
+ctf-backend/.venv/
+ctf-backend/__pycache__/
+ctf-backend/**/__pycache__/
+*.pyc
+*.pyo
+*.egg-info/
+.eggs/
 
 # Editor directories and files
 .vscode/*
@@ -22,4 +32,7 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
-.env
+
+# Environment files
+ctf-frontend/.env
+ctf-backend/.env

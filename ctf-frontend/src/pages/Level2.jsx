@@ -308,7 +308,6 @@ const CircleMe = () => {
 
         {/* Reusable Submit Flag Dialog */}
         <SubmitFlag
-          expectedFlag={import.meta.env.FLAG2}
           onSuccessPath="/level3"
           successMessage="Infinity Conquered! ♾️"
           level={2}

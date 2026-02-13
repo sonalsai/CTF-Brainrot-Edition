@@ -14,10 +14,11 @@ import {
 import { FaArrowRight, FaFlag, FaBrain } from "react-icons/fa";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
-import { saveProgress, verifyAccess } from "../utils/security";
+import { saveProgress, verifyAccess, getSessionId } from "../utils/security";
+
+const API_BASE = import.meta.env.VITE_API_URL || "";
 
 const SubmitFlag = ({
-  expectedFlag,
   onSuccessPath,
   successMessage = "System Unlocked! 🔓",
   level,
@@ -50,22 +51,64 @@ const SubmitFlag = ({
   const handleClose = () => setOpen(false);
 
   const handleSubmit = async () => {
-    const refinedFlag = flag.trim().toLowerCase().replaceAll(" ", "_");
-    if (refinedFlag === expectedFlag) {
-      // Update progress securely
-      if (level) {
-        await saveProgress(level);
+    try {
+      const sessionId = getSessionId();
+      const response = await fetch(`${API_BASE}/api/flags/submit`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          level,
+          flag: flag.trim(),
+          session_id: sessionId,
+        }),
+      });
+
+      if (!response.ok) {
+        const error = await response.json();
+        toast.error(error.detail || "Something went wrong", {
+          id: "submit-error",
+          position: "top-center",
+          style: {
+            background: "#1a1a1a",
+            color: "#ff1744",
+            border: "1px solid #ff1744",
+            boxShadow: "0 0 15px rgba(255, 23, 68, 0.3)",
+            fontWeight: "bold",
+          },
+        });
+        return;
       }
 
-      setIsLoading(true);
-      handleClose();
+      const data = await response.json();
 
-      setTimeout(() => {
-        navigate(onSuccessPath);
-      }, 3000);
-    } else {
-      toast.error("Incorrect Flag. Try again! 🚫", {
-        id: "incorrect-flag",
+      if (data.correct) {
+        // Save progress token from backend
+        if (level && data.token) {
+          await saveProgress(level, data.token);
+        }
+
+        setIsLoading(true);
+        handleClose();
+
+        setTimeout(() => {
+          navigate(onSuccessPath);
+        }, 3000);
+      } else {
+        toast.error(data.message || "Incorrect Flag. Try again! 🚫", {
+          id: "incorrect-flag",
+          position: "top-center",
+          style: {
+            background: "#1a1a1a",
+            color: "#ff1744",
+            border: "1px solid #ff1744",
+            boxShadow: "0 0 15px rgba(255, 23, 68, 0.3)",
+            fontWeight: "bold",
+          },
+        });
+      }
+    } catch (err) {
+      toast.error("Network error. Is the backend running?", {
+        id: "network-error",
         position: "top-center",
         style: {
           background: "#1a1a1a",
@@ -220,7 +263,7 @@ const SubmitFlag = ({
                 },
                 "& .MuiInputBase-input": {
                   textAlign: "center",
-                  color: "#333", // Ensure text visibility
+                  color: "#333",
                 },
               }}
               slotProps={{

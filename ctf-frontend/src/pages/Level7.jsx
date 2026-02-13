@@ -1,10 +1,12 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Box, Button, Typography, TextField } from "@mui/material";
 import { motion } from "framer-motion";
 import toast from "react-hot-toast";
 import SubmitFlag from "../components/SubmitFlag";
 
 import morse from "morse";
+
+const API_BASE = import.meta.env.VITE_API_URL || "";
 
 const getMorseForChar = (char) => {
   if (char === " ") return "";
@@ -15,7 +17,22 @@ const Level7 = () => {
   const [stage, setStage] = useState(0);
   const [decodedMsg, setDecodedMsg] = useState("");
   const [currentSeq, setCurrentSeq] = useState("");
-  const targetMessage = import.meta.env.TELEMETRY_MSG;
+  const [targetMessage, setTargetMessage] = useState("");
+
+  useEffect(() => {
+    const fetchTelemetry = async () => {
+      try {
+        const response = await fetch(
+          `${API_BASE}/api/levels/telemetry/message`,
+        );
+        const data = await response.json();
+        setTargetMessage(data.message);
+      } catch {
+        toast.error("Failed to load telemetry data");
+      }
+    };
+    fetchTelemetry();
+  }, []);
 
   const handleDownloadLog = () => {
     const link = document.createElement("a");
@@ -326,7 +343,6 @@ const Level7 = () => {
       </Box>
 
       <SubmitFlag
-        expectedFlag={import.meta.env.FLAG7}
         onSuccessPath="/coming-soon"
         successMessage="SIGNAL ESTABLISHED. 📡"
         level={7}
